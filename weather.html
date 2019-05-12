@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>US Weather</title>
+        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="./css/bootstrap.css">
+
+        <!-- sticky header with site name -->
+    </head>
+
+
+    <body>
+
+        <!-- left aligned flex container containing the form and a brief overview of the current weather conditions -->
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+        <script text="type/javascript" src="./js/script.js"></script>
+
+        <div class="sidenav">
+            <label class="light-text">Get weather for another U.S. city: </label><br>
+            <input id="weatherInput" type="text"></input>
+            <button id="weatherSubmit" class="btn btn-outline-light" onclick="getWeather()">Submit</button>
+        </div>
+
+        <div class="content">
+
+            <div class="container"> 
+                <div class="row justify-content-center">
+                    <div class="col justify-content-center">
+                        <h1>Current weather in <span id="location-name">Cair Paravel</span>, US</h1>
+                        <p>Latitude: <span id="lat">??</span> Longitude: <span id="lon">??</span></p>
+                    </div>
+                </div>
+                
+                
+                <div class="row justify-content-start">    
+                    <div class="col-md-8 lb">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-3 align-self-center">
+                                    <img id="weather-pic" src="http://openweathermap.org/img/w/02d.png" />
+                                </div>
+                                <div class="col-7">
+                                    <span class="text-xl"><span id="degrees-current">76</span>&#176;F</span>
+                                    <br>
+                                    <span id="weather-condition" class="text-m">Partly Cloudy</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                    <p class="text-m">High: <span id="degrees-max">78</span>&#176;F Low: <span id="degrees-min">68</span>&#176;F</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 lb data">
+                        <!-- More technical data here -->
+                        <p>Cloud cover: <span id="cloud-cover">46</span>%
+                        <br>Wind speed: <span id="wind">4</span> mph <span id="wind-direction">WNW</span>
+                        <br>Humidity: <span id="humidity">75</span>%
+                        <br>Pressure: <span id="pressure">1016</span> hPa
+                        <br>Visibility: <span id="visibility">15.0</span> mi
+                        <br>Sunrise: <span id="sunrise">6:54am</span>
+                        <br>Sunset: <span id="sunset">8:31pm</span></p>
+                    </div>
+                </div>
+
+                <div class="row">
+
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
