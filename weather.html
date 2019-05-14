@@ -10,7 +10,7 @@
     </head>
 
 
-    <body>
+    <body class="lb">
 
         <!-- left aligned flex container containing the form and a brief overview of the current weather conditions -->
         
@@ -25,18 +25,18 @@
 
         <div class="content">
 
-            <div class="container"> 
+            <div id="current-weather-results" class="container itau">
                 <div class="row justify-content-center">
                     <div class="col justify-content-center">
-                        <h1>Current weather in <span id="location-name">Cair Paravel</span>, US</h1>
+                        <h1 class="top-margin">Current weather in <span id="location-name">Cair Paravel</span>, US</h1>
                         <p>Latitude: <span id="lat">??</span> Longitude: <span id="lon">??</span></p>
                     </div>
                 </div>
                 
                 
                 <div class="row justify-content-start">    
-                    <div class="col-md-8 lb">
-                        <div class="container">
+                    <div class="col-md-6">
+                        <div class="container lb-clear">
                             <div class="row">
                                 <div class="col-3 align-self-center">
                                     <img id="weather-pic" src="http://openweathermap.org/img/w/02d.png" />
@@ -54,9 +54,11 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4 lb data">
+                    <div class="col-md-2"></div>
+
+                    <div class="col-md-4">
                         <!-- More technical data here -->
-                        <p>Cloud cover: <span id="cloud-cover">46</span>%
+                        <p class="lb-clear data">Cloud cover: <span id="cloud-cover">46</span>%
                         <br>Wind speed: <span id="wind">4</span> mph <span id="wind-direction">WNW</span>
                         <br>Humidity: <span id="humidity">75</span>%
                         <br>Pressure: <span id="pressure">1016</span> hPa
@@ -66,11 +68,152 @@
                     </div>
                 </div>
 
-                <div class="row">
+            </div>
+            <br>
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="row justify-content-center">
+                        <div class="col-2 align-self-center">
+                            <h3 id="date1" c;ass >someDate</h3>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-18">
 
+                    <div class="container">
+
+                        <div class="row justify-content-center">
+
+                            <div class="col-4">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <h4 id="time11">3:00am</h4>
+                                    </div>
+                                    <div class="row">
+                                        <img id="weather-img11" src="https://eetgreer.fve/etg.ppf"/>
+                                    </div>
+                                    <div class="row">
+                                        <h3><span id="cur-temp11min">15</span>-<span id="cur-temp11max">16</span>&#176;F</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <h4 id="time12">3:00am</h4>
+                                    </div>
+                                    <div class="row">
+                                        <img id="weather-img12" src="https://eetgreer.fve/etg.ppf"/>
+                                    </div>
+                                    <div class="row">
+                                        <h3><span id="cur-temp12min">15</span>-<span id="cur-temp12max">16</span>&#176;F</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <h4 id="time13">3:00am</h4>
+                                    </div>
+                                    <div class="row">
+                                        <img id="weather-img13" src="https://eetgreer.fve/etg.ppf"/>
+                                    </div>
+                                    <div class="row">
+                                        <h3><span id="cur-temp13min">15</span>-<span id="cur-temp13max">16</span>&#176;F</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <h4 id="time14">3:00am</h4>
+                                    </div>
+                                    <div class="row">
+                                        <img id="weather-img14" src="https://eetgreer.fve/etg.ppf"/>
+                                    </div>
+                                    <div class="row">
+                                        <h3><span id="cur-temp14min">15</span>-<span id="cur-temp14max">16</span>&#176;F</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        
+                    </div>
                 </div>
             </div>
+            <div class="row justify-content-center">
+                <div class="col-18">
+
+                    <div class="container">
+                        
+
+                        <div class="row justify-content-center">
+
+                            <div class="col-4">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <h4 id="time11">3:00am</h4>
+                                    </div>
+                                    <div class="row">
+                                        <img id="weather-img11" src="https://eetgreer.fve/etg.ppf"/>
+                                    </div>
+                                    <div class="row">
+                                        <h3><span id="cur-temp11min">15</span>-<span id="cur-temp11max">16</span>&#176;F</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <h4 id="time12">3:00am</h4>
+                                    </div>
+                                    <div class="row">
+                                        <img id="weather-img12" src="https://eetgreer.fve/etg.ppf"/>
+                                    </div>
+                                    <div class="row">
+                                        <h3><span id="cur-temp12min">15</span>-<span id="cur-temp12max">16</span>&#176;F</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <h4 id="time13">3:00am</h4>
+                                    </div>
+                                    <div class="row">
+                                        <img id="weather-img13" src="https://eetgreer.fve/etg.ppf"/>
+                                    </div>
+                                    <div class="row">
+                                        <h3><span id="cur-temp13min">15</span>-<span id="cur-temp13max">16</span>&#176;F</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+                                        <h4 id="time14">3:00am</h4>
+                                    </div>
+                                    <div class="row">
+                                        <img id="weather-img14" src="https://eetgreer.fve/etg.ppf"/>
+                                    </div>
+                                    <div class="row">
+                                        <h3><span id="cur-temp14min">15</span>-<span id="cur-temp14max">16</span>&#176;F</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+            
         </div>
 
     </body>

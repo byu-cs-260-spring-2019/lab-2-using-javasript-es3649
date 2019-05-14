@@ -63,7 +63,7 @@ function dateToTime(date) {
     return hours + ":" + minutes + " " + apm;
 }
 
-async function getWeather() {
+function getWeather() {
     console.log("Getting weather");
 
     const value = document.getElementById("weatherInput").value;
@@ -73,6 +73,12 @@ async function getWeather() {
     }
 
     console.log("Value is: " + value);
+
+    getCurrentWeather(value);
+    get5DayForecast(value);
+}
+
+async function getCurrentWeather(value) {
     
     const url = "http://api.openweathermap.org/data/2.5/weather?q=" + value + ",US&units=imperial" + "&APPID=9fb681a7c8aeac29e2793482ec531898";
     console.log("Fetching" + url);
@@ -119,6 +125,22 @@ async function getWeather() {
         
     } catch (err) {
         console.log(err);
+        // TODO change some html elements so that the
+        // user knows that the lookup failes
     }
         
-  };
+};
+
+async function get5DayForecast(value) {
+    const url = "http://api.openweathermap.org/data/2.5/forecast?q=" + value + ",US&units=imperial" + "&APPID=9fb681a7c8aeac29e2793482ec531898";
+    console.log("Fetching" + url);
+
+    try {
+        const response = await fetch(url);
+        const json = await response.json();
+
+        console.log(json);
+    } catch (err) {
+        console.log(err);
+    }
+}

@@ -22,7 +22,7 @@ Use the [tutorial](https://github.com/BYU-CS-260-Winter-2019/lab2/wiki)
 on the Wiki to get started with using the weather API. We'll begin by
 building a form that gets the current weather:
 
-![weather form](images/weatherForm.png)
+![weather form](css/images/weatherForm.png)
 
 ## Weather Forecast
 

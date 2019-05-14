@@ -37,8 +37,12 @@ body {
     }
 }
 
-.content {
+/* .content {
     margin-top: 40px;
+} */
+
+.lb-clear {
+    background-color: rgb(218, 245, 255, .60);
 }
 
 .lb {
@@ -60,6 +64,21 @@ body {
 
 .text-xl {
     font-size: 48pt;
+}
+
+.top-margin {
+    margin-top: 2S0px;
+}
+
+.itau {
+    background-image: url("images/itau2.JPG");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 2%;
+    /* background-color: rgba(255, 255, 255, 0.88);
+    background-blend-mode: lighten; */
 }
 
 #weatherSubmit {
