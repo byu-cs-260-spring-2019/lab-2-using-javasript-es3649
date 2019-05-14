@@ -94,6 +94,6 @@ body {
 }
 
 
-#forecast-error, #error-message {
+#forecast-results, #forecast-error, #error-message {
     display: none;
 }

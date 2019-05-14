@@ -192,7 +192,7 @@ async function get5DayForecast(value) {
         console.log(json);
 
         // document.getElementById("forecast-error").style.display = "none";
-        // document.getElementById("forecast-results").style.display = "block";
+        document.getElementById("forecast-results").style.display = "block";
 
         for (var i = 0; i < json.cnt; i++) {
             const elem = getElemID(i);
