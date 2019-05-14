@@ -92,3 +92,8 @@ body {
 #degrees-current {
     size: 48pt;
 }
+
+
+#forecast-error, #error-message {
+    display: none;
+}

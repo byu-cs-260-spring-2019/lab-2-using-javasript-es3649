@@ -60,7 +60,35 @@ function dateToTime(date) {
         hours = hours % 12;
         apm = "pm";
     }
+    if (hours == 0) {
+        hours = 12;
+    }
     return hours + ":" + minutes + " " + apm;
+}
+
+/**
+ * Converts a date to a day of the week (as a string)
+ * @param {Date} date the date to convert to day-of-week
+ */
+function getDayOfWeek(date) {
+    switch(date.getDay()) {
+        case 0:
+            return "Sunday";
+        case 1:
+            return "Monday";
+        case 2:
+            return "Tuesday";
+        case 3:
+            return "Wednesday";
+        case 4:
+            return "Thursday";
+        case 5:
+            return "Friday";
+        case 6:
+            return "Saturday";
+        default:
+            return "8 days a week!";
+    }
 }
 
 function getWeather() {
@@ -89,6 +117,9 @@ async function getCurrentWeather(value) {
 
         console.log(json);
 
+        document.getElementById("error-message").style.display = "none";
+        document.getElementById("weather-display").style.display = "block";
+
         // set attributes
         document.getElementById("location-name").innerHTML = json.name;
         document.getElementById("lat").innerHTML = json.coord.lat.toFixed(2);
@@ -99,6 +130,7 @@ async function getCurrentWeather(value) {
         document.getElementById("degrees-max").innerHTML = json.main.temp_max.toFixed(1);
         document.getElementById("degrees-min").innerHTML = json.main.temp_min.toFixed(1);
 
+        // capitalize each word
         document.getElementById("weather-condition").innerHTML = 
             json.weather[0].description.replace(/\b\w/g, l => l.toUpperCase());
         // Thanks you, stack overflow, for this line ^~~~~~~~~~~~~~~~~~~~^
@@ -125,11 +157,29 @@ async function getCurrentWeather(value) {
         
     } catch (err) {
         console.log(err);
-        // TODO change some html elements so that the
-        // user knows that the lookup failes
+        
+        // change UI to show failure
+        document.getElementById("error-message").style.display = "block";
+        document.getElementById("weather-display").style.display = "none";
+
+        document.getElementById("error-location").innerHTML = value;
     }
         
 };
+
+/**
+ * converts the given value to a 2 digit octal value
+ * @param {int} i the value to convert
+ */
+function getElemID(i) {
+    var idString = i.toString(8); // to base 8 string
+    if (idString < 8) {
+        idString = "0" + idString;
+    }
+
+    // console.log(i + "->" + idString);
+    return idString;
+}
 
 async function get5DayForecast(value) {
     const url = "http://api.openweathermap.org/data/2.5/forecast?q=" + value + ",US&units=imperial" + "&APPID=9fb681a7c8aeac29e2793482ec531898";
@@ -140,7 +190,56 @@ async function get5DayForecast(value) {
         const json = await response.json();
 
         console.log(json);
+
+        // document.getElementById("forecast-error").style.display = "none";
+        // document.getElementById("forecast-results").style.display = "block";
+
+        for (var i = 0; i < json.cnt; i++) {
+            const elem = getElemID(i);
+            const weather = json.list[i];
+
+            var date = new Date(0);
+            date.setUTCSeconds(weather.dt);
+
+            if (i%8 == 0) {
+                // do this once per round
+
+                document.getElementById("date" + Math.floor(i / 8)).innerHTML = getDayOfWeek(date);
+            }
+
+            document.getElementById("time" + elem).innerHTML = dateToTime(date);
+
+            document.getElementById("temp-min" + elem).innerHTML = weather.main.temp_min.toFixed(1);
+            document.getElementById("temp-max" + elem).innerHTML = weather.main.temp_max.toFixed(1);
+
+            document.getElementById("wind" + elem).innerHTML = weather.wind.speed.toFixed(1);
+            document.getElementById("wind-direction" + elem).innerHTML = degreesToDirection(weather.wind.deg);
+
+            var img = document.getElementById("image" + elem);
+            img.src = "http://openweathermap.org/img/w/"+ weather.weather[0].icon +".png";
+
+            var data = weather.weather[0].description.replace(/\b\w/g, l => l.toUpperCase()) + "\n";
+
+            if (weather.hasOwnProperty("rain")) {
+                data += "Rain: " + weather.rain["3h"] + " in\n";
+            }
+            if (weather.hasOwnProperty("snow")) {
+                data += "Snow: " + weather.snow["3h"] + " in\n";
+            }
+
+            data += "Cloud cover: " + weather.clouds.all + "%\n";
+            data += "Humidity: " + weather.main.humidity + "%";
+
+            img.title = data;
+
+        }
+
     } catch (err) {
         console.log(err);
+
+        // document.getElementById("forecast-error").style.display = "block";
+        // document.getElementById("forecast-results").style.display = "none";
+
+        // document.getElementById("forecast-error-location").innerHTML = value;
     }
 }
