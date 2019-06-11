@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>US Weather</title>
+        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="./css/bootstrap.css">
+
+        <!-- sticky header with site name -->
+    </head>
+
+
+    <body class="lb">
+
+        <!-- left aligned flex container containing the form and a brief overview of the current weather conditions -->
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
+        <script text="type/javascript" src="./js/script.js"></script>
+
+        <div class="sidenav">
+            <label class="light-text">Get weather for another U.S. city: </label><br>
+            <input id="weatherInput" type="text"></input>
+            <button id="weatherSubmit" class="btn btn-outline-light" onclick="getWeather()">Submit</button>
+        </div>
+
+        <div id="error-message" class="content itau">
+            <h1 class="top-margin">Unable to display weather data for <span id="error-location">Cair Paravel</span>, US</h1>
+        </div>
+
+        <div id="weather-display" class="content">
+
+            <div id="current-weather-results" class="container itau">
+                <div class="row justify-content-center">
+                    <div class="col justify-content-center">
+                        <h1 class="top-margin">Current weather in <span id="location-name">Cair Paravel</span>, US</h1>
+                        <p>Latitude: <span id="lat">??</span> Longitude: <span id="lon">??</span></p>
+                    </div>
+                </div>
+                
+                
+                <div class="row justify-content-start">    
+                    <div class="col-md-6">
+                        <div class="container lb-clear">
+                            <div class="row">
+                                <div class="col-3 align-self-center">
+                                    <img id="weather-pic" src="https://openweathermap.org/img/w/02d.png" />
+                                </div>
+                                <div class="col-7">
+                                    <span class="text-xl"><span id="degrees-current">76</span>&#176;F</span>
+                                    <br>
+                                    <span id="weather-condition" class="text-m">Partly Cloudy</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                    <p class="text-m">High: <span id="degrees-max">78</span>&#176;F Low: <span id="degrees-min">68</span>&#176;F</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-2"></div>
+
+                    <div class="col-md-4">
+                        <!-- More technical data here -->
+                        <p class="lb-clear data">Cloud cover: <span id="cloud-cover">46</span>%
+                        <br>Wind speed: <span id="wind">4</span> mph <span id="wind-direction">WNW</span>
+                        <br>Humidity: <span id="humidity">75</span>%
+                        <br>Pressure: <span id="pressure">1016</span> hPa
+                        <br>Visibility: <span id="visibility">15.0</span> mi
+                        <br>Sunrise: <span id="sunrise">6:54am</span>
+                        <br>Sunset: <span id="sunset">8:31pm</span></p>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            <div id="forecast-results">
+
+                <div class="row justify-content-center">
+                    <h1>5-day Forecast</h1>
+                </div>
+                
+                <div id="forecast-error" class="row justify-content-center">
+                    <h1>Unable to get forecast for <span id="forecast-error-location">Cair Paravel</span>, US</h1>
+                </div>
+                
+                <div class="row justify-content-center">
+                    
+                    <div class="col-lg-2 border border-dark" align="center">
+                        <h3 id="date0">Day 1</h3>
+                        <h4 id="time00">time 0</h4>
+                        <img id="image00" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min00">101</span>-<span id="temp-max00">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind00">5</span>mph <span id="wind-direction00">WNW</span></p>
+                        <h4 id="time01">time 1</h4>
+                        <img id="image01" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min01">101</span>-<span id="temp-max01">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind01">5</span>mph <span id="wind-direction01">WNW</span></p>
+                        <h4 id="time02">time 2</h4>
+                        <img id="image02" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min02">101</span>-<span id="temp-max02">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind02">5</span>mph <span id="wind-direction02">WNW</span></p>
+                        <h4 id="time03">time 3</h4>
+                        <img id="image03" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min03">101</span>-<span id="temp-max03">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind03">5</span>mph <span id="wind-direction03">WNW</span></p>
+                        <h4 id="time04">time 4</h4>
+                        <img id="image04" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min04">101</span>-<span id="temp-max04">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind04">5</span>mph <span id="wind-direction04">WNW</span></p>
+                        <h4 id="time05">time 5</h4>
+                        <img id="image05" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min05">101</span>-<span id="temp-max05">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind05">5</span>mph <span id="wind-direction05">WNW</span></p>
+                        <h4 id="time06">time 6</h4>
+                        <img id="image06" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min06">101</span>-<span id="temp-max06">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind06">5</span>mph <span id="wind-direction06">WNW</span></p>
+                        <h4 id="time07">time 7</h4>
+                        <img id="image07" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min07">101</span>-<span id="temp-max07">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind07">5</span>mph <span id="wind-direction07">WNW</span></p>
+                    </div>
+                    
+                    <div class="col-lg-2 border border-dark" align="center">
+                        <h3 id="date1">Day 2</h3>
+                        <h4 id="time10">time 0</h4>
+                        <img id="image10" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min10">101</span>-<span id="temp-max10">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind10">5</span>mph <span id="wind-direction10">WNW</span></p>
+                        <h4 id="time11">time 1</h4>
+                        <img id="image11" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min11">101</span>-<span id="temp-max11">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind11">5</span>mph <span id="wind-direction11">WNW</span></p>
+                        <h4 id="time12">time 2</h4>
+                        <img id="image12" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min12">101</span>-<span id="temp-max12">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind12">5</span>mph <span id="wind-direction12">WNW</span></p>
+                        <h4 id="time13">time 3</h4>
+                        <img id="image13" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min13">101</span>-<span id="temp-max13">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind13">5</span>mph <span id="wind-direction13">WNW</span></p>
+                        <h4 id="time14">time 4</h4>
+                        <img id="image14" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min14">101</span>-<span id="temp-max14">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind14">5</span>mph <span id="wind-direction14">WNW</span></p>
+                        <h4 id="time15">time 5</h4>
+                        <img id="image15" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min15">101</span>-<span id="temp-max15">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind15">5</span>mph <span id="wind-direction15">WNW</span></p>
+                        <h4 id="time16">time 6</h4>
+                        <img id="image16" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min16">101</span>-<span id="temp-max16">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind16">5</span>mph <span id="wind-direction16">WNW</span></p>
+                        <h4 id="time17">time 7</h4>
+                        <img id="image17" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min17">101</span>-<span id="temp-max17">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind17">5</span>mph <span id="wind-direction17">WNW</span></p>
+                    </div>
+                    
+                    <div class="col-lg-2 border border-dark" align="center">
+                        <h3 id="date2">Day 3</h3>
+                        <h4 id="time20">time 0</h4>
+                        <img id="image20" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min20">101</span>-<span id="temp-max20">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind20">5</span>mph <span id="wind-direction20">WNW</span></p>
+                        <h4 id="time21">time 1</h4>
+                        <img id="image21" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min21">101</span>-<span id="temp-max21">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind21">5</span>mph <span id="wind-direction21">WNW</span></p>
+                        <h4 id="time22">time 2</h4>
+                        <img id="image22" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min22">101</span>-<span id="temp-max22">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind22">5</span>mph <span id="wind-direction22">WNW</span></p>
+                        <h4 id="time23">time 3</h4>
+                        <img id="image23" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min23">101</span>-<span id="temp-max23">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind23">5</span>mph <span id="wind-direction23">WNW</span></p>
+                        <h4 id="time24">time 4</h4>
+                        <img id="image24" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min24">101</span>-<span id="temp-max24">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind24">5</span>mph <span id="wind-direction24">WNW</span></p>
+                        <h4 id="time25">time 5</h4>
+                        <img id="image25" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min25">101</span>-<span id="temp-max25">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind25">5</span>mph <span id="wind-direction25">WNW</span></p>
+                        <h4 id="time26">time 6</h4>
+                        <img id="image26" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min26">101</span>-<span id="temp-max26">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind26">5</span>mph <span id="wind-direction26">WNW</span></p>
+                        <h4 id="time27">time 7</h4>
+                        <img id="image27" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min27">101</span>-<span id="temp-max27">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind27">5</span>mph <span id="wind-direction27">WNW</span></p>
+                    </div>
+                    
+                    <div class="col-lg-2 border border-dark" align="center">
+                        <h3 id="date3">Day 4</h3>
+                        <h4 id="time30">time 0</h4>
+                        <img id="image30" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min30">101</span>-<span id="temp-max30">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind30">5</span>mph <span id="wind-direction30">WNW</span></p>
+                        <h4 id="time31">time 1</h4>
+                        <img id="image31" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min31">101</span>-<span id="temp-max31">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind31">5</span>mph <span id="wind-direction31">WNW</span></p>
+                        <h4 id="time32">time 2</h4>
+                        <img id="image32" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min32">101</span>-<span id="temp-max32">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind32">5</span>mph <span id="wind-direction32">WNW</span></p>
+                        <h4 id="time33">time 3</h4>
+                        <img id="image33" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min33">101</span>-<span id="temp-max33">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind33">5</span>mph <span id="wind-direction33">WNW</span></p>
+                        <h4 id="time34">time 4</h4>
+                        <img id="image34" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min34">101</span>-<span id="temp-max34">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind34">5</span>mph <span id="wind-direction34">WNW</span></p>
+                        <h4 id="time35">time 5</h4>
+                        <img id="image35" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min35">101</span>-<span id="temp-max35">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind35">5</span>mph <span id="wind-direction35">WNW</span></p>
+                        <h4 id="time36">time 6</h4>
+                        <img id="image36" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min36">101</span>-<span id="temp-max36">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind36">5</span>mph <span id="wind-direction36">WNW</span></p>
+                        <h4 id="time37">time 7</h4>
+                        <img id="image37" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min37">101</span>-<span id="temp-max37">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind37">5</span>mph <span id="wind-direction37">WNW</span></p>
+                    </div>
+                    
+                    <div class="col-lg-2 border border-dark" align="center">
+                        <h3 id="date4">Day 5</h3>
+                        <h4 id="time40">time 0</h4>
+                        <img id="image40" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min40">101</span>-<span id="temp-max40">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind40">5</span>mph <span id="wind-direction40">WNW</span></p>
+                        <h4 id="time41">time 1</h4>
+                        <img id="image41" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min41">101</span>-<span id="temp-max41">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind41">5</span>mph <span id="wind-direction41">WNW</span></p>
+                        <h4 id="time42">time 2</h4>
+                        <img id="image42" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min42">101</span>-<span id="temp-max42">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind42">5</span>mph <span id="wind-direction42">WNW</span></p>
+                        <h4 id="time43">time 3</h4>
+                        <img id="image43" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min43">101</span>-<span id="temp-max43">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind43">5</span>mph <span id="wind-direction43">WNW</span></p>
+                        <h4 id="time44">time 4</h4>
+                        <img id="image44" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min44">101</span>-<span id="temp-max44">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind44">5</span>mph <span id="wind-direction44">WNW</span></p>
+                        <h4 id="time45">time 5</h4>
+                        <img id="image45" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min45">101</span>-<span id="temp-max45">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind45">5</span>mph <span id="wind-direction45">WNW</span></p>
+                        <h4 id="time46">time 6</h4>
+                        <img id="image46" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min46">101</span>-<span id="temp-max46">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind46">5</span>mph <span id="wind-direction46">WNW</span></p>
+                        <h4 id="time47">time 7</h4>
+                        <img id="image47" src="http://openweathermap.org/img/w/02d.png"/>
+                        <h3><span id="temp-min47">101</span>-<span id="temp-max47">105</span>&#176;F</h3>
+                        <p>Wind: <span id="wind47">5</span>mph <span id="wind-direction47">WNW</span></p>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+    </body>
+
+</html>
